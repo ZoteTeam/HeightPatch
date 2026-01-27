@@ -1,0 +1,15 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.zoteteam.height_patch'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    compileOnly 'com.github.Reider745:ZoteCoreLoader:beta-1.0.0'
+}

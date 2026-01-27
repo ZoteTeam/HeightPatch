@@ -1,0 +1,5 @@
+{
+  "hooks": [
+    "org.zoteteam.height_patch.NetworkChunkSerializerHook"
+  ]
+}
