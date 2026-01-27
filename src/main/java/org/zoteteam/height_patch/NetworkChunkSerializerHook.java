@@ -11,6 +11,7 @@ import cn.nukkit.nbt.NBTIO;
 import cn.nukkit.nbt.tag.CompoundTag;
 import cn.nukkit.utils.BinaryStream;
 import cn.nukkit.utils.ThreadCache;
+import com.reider745.api.hooks.TypeHook;
 import com.reider745.api.hooks.annotation.Hooks;
 import com.reider745.api.hooks.annotation.Inject;
 import it.unimi.dsi.fastutil.ints.IntSet;
@@ -23,7 +24,7 @@ import java.util.function.Consumer;
 
 @Hooks(className = "cn.nukkit.level.format.generic.serializer.NetworkChunkSerializer")
 public class NetworkChunkSerializerHook {
-    @Inject
+    @Inject(type = TypeHook.RETURN)
     public static void serialize(IntSet protocols, BaseChunk chunk, Consumer<NetworkChunkSerializer.NetworkChunkSerializerCallback> callback, boolean antiXray, DimensionData dimensionData) {
         for (int protocolId : protocols) {
             byte[] blockEntities;
