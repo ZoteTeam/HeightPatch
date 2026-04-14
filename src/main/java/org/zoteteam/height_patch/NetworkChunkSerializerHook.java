@@ -2,7 +2,9 @@ package org.zoteteam.height_patch;
 
 import cn.nukkit.blockentity.BlockEntity;
 import cn.nukkit.blockentity.BlockEntitySpawnable;
+import cn.nukkit.level.BlockPalette;
 import cn.nukkit.level.DimensionData;
+import cn.nukkit.level.GlobalBlockPalette;
 import cn.nukkit.level.format.ChunkSection;
 import cn.nukkit.level.format.generic.BaseChunk;
 import cn.nukkit.level.format.generic.serializer.NetworkChunkData;
@@ -49,10 +51,10 @@ public class NetworkChunkSerializerHook {
             subChunkCount = Math.max(1, subChunkCount);
             networkChunkData.setChunkSections(subChunkCount);
 
-
+            BlockPalette palette = GlobalBlockPalette.getPaletteByProtocol(protocolId);
             //int offset = chunk.getSectionOffset();
             for (int i = 0; i < subChunkCount; i++) {
-                sections[i].writeTo(protocolId, stream, antiXray);
+                sections[i].writeTo(protocolId, stream, antiXray, palette);
             }
 
             stream.put(chunk.getBiomeIdArray());
